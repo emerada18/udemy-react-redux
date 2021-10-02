@@ -1,48 +1,42 @@
 import React from 'react';
 
-// function App() {
-// const greeting = 'Hello';
-// const dom = <h1>Hi</h1>;
-// const dom = <h1 className="foo">{greeting}</h1>;
-// return dom;
-// return (
-// return (
-// <div>
-// 	<label htmlFor="bar">bar</label>
-// 	<input
-// 		type="text"
-// 		onChange={() => {
-// 			console.log('I am clicked');
-// 		}}
-// 	/>
-// </div>
-// 	<React.Fragment>
-// 		<label htmlFor="bar">bar</label>
-// 		<input
-// 			type="text"
-// 			onChange={() => {
-// 				console.log('I am clicked');
-// 			}}
-// 		/>
-// 	</React.Fragment> //divを出力しないため
-// );
-// }
-
 const App = () => {
+	const profiles = [
+		{ name: 'Taro', age: 10 },
+		{ name: 'Haan', age: 100 },
+		{},
+	];
 	return (
 		<div>
-			<Cat />
-			<Cat />
+			{profiles.map((profile, index) => {
+				return (
+					<User
+						name={profile.name}
+						age={profile.age}
+						key={index}
+					></User>
+				);
+			})}
+		</div>
+	);
+	// return (
+	// 	<div>
+	// 		<User name={'Taro'} age={5} />
+	// 		<User name={'Taros'} age={50} />
+	// 	</div>
+	// );
+};
+
+const User = (props) => {
+	return (
+		<div>
+			Hi, I'm {props.name} and {props.age} years old
 		</div>
 	);
 };
 
-const Cat = () => {
-	return (
-		<div>
-			<div>hi</div>
-		</div>
-	);
+User.defaultProps = {
+	name: 'nonam',
+	age: 1,
 };
-
 export default App;
